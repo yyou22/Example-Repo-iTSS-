@@ -52,8 +52,6 @@ train_loader = torch.utils.data.DataLoader(trainset, batch_size=args.batch_size,
 test_loader = torch.utils.data.DataLoader(testset, batch_size=args.test_batch_size, shuffle=False, **kwargs)
 
 def train(args, model, device, train_loader, optimizer, epoch):
-	#mlflow
-	start_time = last_logging = time.time()
 
 	model.train()
 	for batch_idx, (data, target) in enumerate(train_loader):
