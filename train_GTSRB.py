@@ -56,8 +56,8 @@ transform_test = transforms.Compose([
     transforms.ToTensor(),
 ])
 
-trainset = torchvision.datasets.GTSRB(root="./dataset/train", split="train", download=True, transform=transforms_train)
-testset = torchvision.datasets.GTSRB(root="./dataset/test", split="test", download=True, transform=transforms_test)
+trainset = torchvision.datasets.GTSRB(root="./dataset/train", split="train", download=True, transform=transform_train)
+testset = torchvision.datasets.GTSRB(root="./dataset/test", split="test", download=True, transform=transform_test)
 
 train_loader = torch.utils.data.DataLoader(trainset, batch_size=args.batch_size, shuffle=True, **kwargs)
 test_loader = torch.utils.data.DataLoader(testset, batch_size=args.test_batch_size, shuffle=False, **kwargs)
