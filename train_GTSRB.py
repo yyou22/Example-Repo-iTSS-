@@ -45,8 +45,8 @@ use_cuda = not args.no_cuda and torch.cuda.is_available()
 device = torch.device("cuda" if use_cuda else "cpu")
 kwargs = {'num_workers': 1, 'pin_memory': True} if use_cuda else {}
 
-trainset = torchvision.datasets.GTSRB(root="./dataset/train", split="train", download=True)
-testset = torchvision.datasets.GTSRB(root="./dataset/test", split="train", download=True)
+trainset = torchvision.datasets.GTSRB(root="./dataset/train", split="train", download=True, transform=transforms.ToTensor())
+testset = torchvision.datasets.GTSRB(root="./dataset/test", split="train", download=True, transform=transforms.ToTensor())
 
 train_loader = torch.utils.data.DataLoader(trainset, batch_size=args.batch_size, shuffle=True, **kwargs)
 test_loader = torch.utils.data.DataLoader(testset, batch_size=args.test_batch_size, shuffle=False, **kwargs)
